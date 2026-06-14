@@ -42,3 +42,98 @@ Software Engineering II module assignment.
 - `camelCase` for variables and functions
 - `PascalCase` for React components and Mongoose models
 - `kebab-case` for file names in routes/middleware
+
+## Quick Start
+
+### 1. Configure Environment Variables
+
+Create `backend/.env` from `backend/.env.example` and fill your real values.
+
+Required:
+
+- `MONGO_URI`
+- `JWT_SECRET`
+
+### 2. Install Dependencies
+
+Backend:
+
+```bash
+cd backend
+npm install
+```
+
+Frontend:
+
+```bash
+cd frontend
+npm install
+```
+
+### 3. Run the App
+
+Backend:
+
+```bash
+cd backend
+npm run dev
+```
+
+Frontend:
+
+```bash
+cd frontend
+npm run dev
+```
+
+### 4. Smoke Check
+
+- API health: `GET http://localhost:5000/api/v1/health`
+- Frontend: `http://localhost:5173`
+
+## Project Completion Roadmap
+
+Use this checklist to finish the full assignment.
+
+### Backend Core
+
+- Create models: `User`, `Product`, `Order`, `Review`
+- Add auth controller/routes: register, login, profile
+- Add product controller/routes: list, get by id, create/update/delete (admin)
+- Add order controller/routes: place order, my orders, all orders (admin)
+- Add review controller/routes: add/update review
+
+### Middleware and Validation
+
+- Add `auth` middleware (JWT verify)
+- Add `admin` middleware (role check)
+- Add centralized `errorHandler` + `notFound` middleware
+- Add `express-validator` schemas for all write endpoints
+
+### Security and Reliability
+
+- Ensure password hashing with bcrypt salt rounds (12)
+- Ensure password is never returned (`select: false`)
+- Add request logging (morgan) and app logging (winston)
+- Add rate limits to auth endpoints and global API
+
+### Frontend Features
+
+- Set up routes: home, product details, cart, checkout, login/register, admin
+- Create `AuthContext` and `CartContext` with localStorage persistence
+- Build product listing, product detail, cart, and checkout pages
+- Build admin pages for product and order management
+
+### Testing
+
+- Backend unit tests for controllers/services (Jest)
+- Backend integration tests for key APIs (Supertest + mongodb-memory-server)
+- Frontend component tests for critical flows (RTL + Vitest)
+- Target at least 70% backend business-logic coverage
+
+### Deployment
+
+- Deploy backend (Render)
+- Deploy frontend (Vercel)
+- Configure production env variables and CORS origins
+- Verify full flow in production (register -> cart -> order -> admin update)
