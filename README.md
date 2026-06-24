@@ -1,5 +1,7 @@
 # ShopSmart-Ecommerce
 
+Link- https://shop-smart-ecommerce.vercel.app/
+
 ShopSmart is a full-stack e-commerce platform built using the MERN stack
 (MongoDB, Express.js, React.js, Node.js). It is developed for the ITS3552
 Software Engineering II module assignment.
