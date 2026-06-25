@@ -24,7 +24,7 @@ const createOrder = async (req, res, next) => {
     const orderItems = []
 
     for (const item of items) {
-      const product = await Product.findById(item.product)
+      const product = await Product.findById(item.product || item.productId)
 
       if (!product) {
         return res.status(404).json({
