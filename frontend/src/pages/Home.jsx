@@ -30,7 +30,7 @@ export default function Home() {
             Shop smarter with ShopSmart
           </h1>
           <p className="text-blue-100 text-base sm:text-lg max-w-2xl mx-auto mb-8">
-            AI-powered recommendations, fast checkout, and great deals — all in one place.
+            Fast checkout, great deals, and everything you need — all in one place.
           </p>
           <Link
             to="/products"
