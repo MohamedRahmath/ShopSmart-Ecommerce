@@ -9,7 +9,7 @@ const getProducts = async (req, res, next) => {
     const category = req.query.category
     const search = req.query.search
 
-    const filter = {}
+    const filter = { isActive: { $ne: false } }
 
     if (category) {
       filter.category = category
@@ -41,7 +41,7 @@ const getProducts = async (req, res, next) => {
 
 const getProductById = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findOne({ _id: req.params.id, isActive: { $ne: false } })
 
     if (!product) {
       return res.status(404).json({
@@ -103,10 +103,14 @@ const createProduct = async (req, res, next) => {
 
 const updateProduct = async (req, res, next) => {
   try {
-    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    })
+    const product = await Product.findOneAndUpdate(
+      { _id: req.params.id, isActive: { $ne: false } },
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    )
 
     if (!product) {
       return res.status(404).json({
@@ -126,8 +130,8 @@ const updateProduct = async (req, res, next) => {
 
 const deleteProduct = async (req, res, next) => {
   try {
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
+    const product = await Product.findOneAndUpdate(
+      { _id: req.params.id, isActive: { $ne: false } },
       { isActive: false },
       { new: true },
     )
