@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        const res = await api.get('/products?limit=8')
+        const res = await api.get('/products?limit=100')
         setProducts(res.data.data)
       } catch (err) {
         console.error('Failed to load featured products', err)
